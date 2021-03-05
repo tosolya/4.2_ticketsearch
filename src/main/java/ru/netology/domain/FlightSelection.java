@@ -11,12 +11,12 @@ import lombok.NoArgsConstructor;
     public class FlightSelection implements Comparable<FlightSelection> {
         private int id;
         private int price;
-        private String from;
-        private String to;
+        private String departureAirport;
+        private String arrivalAirport;
         private int flightTime;
 
         public boolean matches(String from, String to) {
-            if (this.from.equalsIgnoreCase(from) && this.to.equalsIgnoreCase(to)) {
+            if (this.departureAirport.equalsIgnoreCase(from) && this.arrivalAirport.equalsIgnoreCase(to)) {
                 return true;
             }
             return false;
@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
 
         @Override
         public int compareTo(FlightSelection o) {
-            return 0;
+            return price - o.price;
         }
 
 

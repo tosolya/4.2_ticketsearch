@@ -12,21 +12,21 @@ public class FlightManager {
         repository.removeById(id);
     }
 
-    public void add(FlightSelection product) {
-        repository.save(product);
+    public void add(FlightSelection flight) {
+        repository.save(flight);
     }
 
-    public void findAll(FlightSelection product) {
+    public void findAll(FlightSelection flight) {
         repository.getAll();
     }
 
     public FlightSelection[] findAllMatches(String from, String to) {
         FlightSelection[] result = new FlightSelection[0];
-        for (FlightSelection product : repository.getAll()) {
-            if (product.matches(from, to)) {
+        for (FlightSelection flight : repository.getAll()) {
+            if (flight.matches(from, to)) {
                 FlightSelection[] tmp = new FlightSelection[result.length + 1];
                 System.arraycopy(result, 0, tmp, 0, result.length);
-                tmp[tmp.length - 1] = product;
+                tmp[tmp.length - 1] = flight;
                 result = tmp;
             }
         }
