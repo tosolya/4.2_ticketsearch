@@ -34,5 +34,7 @@ public class FlightManager {
         return result;
     }
 
-
+    public FlightManager(FlightRepository repository) {
+        this.repository = repository;
+    }
 }

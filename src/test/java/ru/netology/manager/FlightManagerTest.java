@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class FlightManagerTest {
     private FlightRepository repository =new FlightRepository();
-    private FlightManager manager = new FlightManager();
+    private FlightManager manager = new FlightManager(repository);
 
     FlightSelection first = new FlightSelection(1, 1299, "SVO", "KZN", 95);
     FlightSelection second = new FlightSelection(2, 2199, "VKO", "KZN", 95);
@@ -30,7 +30,7 @@ class FlightManagerTest {
     @Test
     void findAllMatchesEqualPriceSort() {
         setUp();
-        FlightSelection[] expected = new FlightSelection[]{fifth,third};
+        FlightSelection[] expected = new FlightSelection[]{second,third};
         FlightSelection[] actual = manager.findAllMatches("VKO","KZN");
         assertArrayEquals(expected, actual);
     }
